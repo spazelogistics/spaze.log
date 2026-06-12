@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spaze.log — логистика без лишнего</title>
+  <meta name="description" content="Spaze.log — онлайн-логистическая компания: заявки, расчет доставки, отслеживание и сопровождение грузов." />
+  <style>
+    :root{
+      --bg:#07111f; --card:#0d1b31; --muted:#9bb0d0; --text:#eef4ff;
+      --accent:#4ea1ff; --accent2:#7c5cff; --line:rgba(255,255,255,.09)
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;font-family:Inter,Arial,sans-serif;background:radial-gradient(circle at top,#122547,#07111f 55%);color:var(--text)}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1180px;margin:0 auto;padding:24px}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:12px 0}
+    .brand{font-weight:800;letter-spacing:.3px;font-size:22px}
+    .pill{padding:10px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.03)}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:stretch;padding:26px 0 10px}
+    .hero h1{font-size:56px;line-height:1.02;margin:0 0 16px}
+    .hero p{color:var(--muted);font-size:18px;line-height:1.6}
+    .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+    .btn{padding:14px 18px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));font-weight:700}
+    .btn.secondary{background:transparent;border:1px solid var(--line)}
+    .card{background:rgba(13,27,49,.88);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 20px 80px rgba(0,0,0,.25)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:18px 0 28px}
+    .mini{padding:18px}
+    .mini h3,.section h2{margin:0 0 10px}
+    .mini p,.section p,li{color:var(--muted);line-height:1.65}
+    .section{margin:28px 0}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .input,.select,textarea{
+      width:100%;padding:14px 15px;border-radius:14px;border:1px solid var(--line);
+      background:#091323;color:var(--text);margin:8px 0 14px
+    }
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .footer{border-top:1px solid var(--line);margin-top:34px;padding:18px 0;color:var(--muted);font-size:14px}
+    .small{font-size:14px;color:var(--muted)}
+    .tag{display:inline-block;margin-right:8px;margin-bottom:8px;padding:8px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.03)}
+    @media (max-width: 900px){
+      .hero,.grid,.two,.row{grid-template-columns:1fr}
+      .hero h1{font-size:40px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="nav">
+      <div class="brand">Spaze.log</div>
+      <div class="pill">bkoshurine@gmail.com</div>
+    </div>
+
+    <div class="hero">
+      <div>
+        <h1>Логистика, которая работает быстро и прозрачно.</h1>
+        <p>Spaze.log помогает бизнесу и частным клиентам отправлять грузы, рассчитывать стоимость доставки, отслеживать статус и получать поддержку в одном месте.</p>
+        <div class="btns">
+          <a class="btn" href="#request">Оставить заявку</a>
+          <a class="btn secondary" href="#services">Услуги</a>
+        </div>
+        <div style="margin-top:18px">
+          <span class="tag">Доставка по РФ</span>
+          <span class="tag">Казахстан ↔ Россия</span>
+          <span class="tag">Склад и экспедирование</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Быстрый расчет</h3>
+        <label>Откуда</label>
+        <input class="input" placeholder="Павлодар">
+        <label>Куда</label>
+        <input class="input" placeholder="Санкт-Петербург">
+        <label>Вес, кг</label>
+        <input class="input" type="number" placeholder="12">
+        <label>Тип груза</label>
+        <select class="select">
+          <option>Стандартный</option>
+          <option>Хрупкий</option>
+          <option>Срочный</option>
+        </select>
+        <div class="pill" style="display:inline-block">Расчет по запросу в мессенджер / почту</div>
+      </div>
+    </div>
+
+    <div class="grid" id="services">
+      <div class="card mini">
+        <h3>Автоперевозки</h3>
+        <p>Полная загрузка, догруз, сборные грузы, межгород и международные маршруты.</p>
+      </div>
+      <div class="card mini">
+        <h3>Сопровождение</h3>
+        <p>Документы, контроль статуса, связь с клиентом и помощь на каждом этапе.</p>
+      </div>
+      <div class="card mini">
+        <h3>Отслеживание</h3>
+        <p>Статус заявки, ETA и уведомления по каждому грузу.</p>
+      </div>
+    </div>
+
+    <div class="two section">
+      <div class="card">
+        <h2>Как продать логистику</h2>
+        <ul>
+          <li>Продавай не перевозку, а результат: срок, сохранность, контроль и спокойствие.</li>
+          <li>Нужны 3 оффера: для бизнеса, для e-commerce и для частных отправок.</li>
+          <li>Лучше всего заходят понятные тарифы, калькулятор и быстрый ответ менеджера.</li>
+          <li>Показывай кейсы: какие грузы, какие сроки, какая экономия.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Куда размещать</h2>
+        <ul>
+          <li>Свой сайт + SEO по городам и маршрутам.</li>
+          <li>Telegram, VK, Instagram, Avito, 2GIS, Яндекс Бизнес.</li>
+          <li>Профильные чаты предпринимателей и маркетплейс-продавцов.</li>
+          <li>Контекстная реклама по запросам “доставка груза”, “логистика”, “перевозка”.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="two section" id="request">
+      <div class="card">
+        <h2>Форма заявки</h2>
+        <div class="row">
+          <input class="input" placeholder="Имя">
+          <input class="input" placeholder="Телефон">
+        </div>
+        <input class="input" placeholder="Email">
+        <textarea rows="5" class="input" placeholder="Что нужно перевезти? Откуда и куда?"></textarea>
+        <a class="btn" href="mailto:bkoshurine@gmail.com?subject=Заявка%20Spaze.log">Отправить на почту</a>
+      </div>
+
+      <div class="card">
+        <h2>Документы для сайта</h2>
+        <p><strong>Политика конфиденциальности</strong> нужна, если ты собираешь имя, телефон или email через форму. В ней укажи, какие данные собираешь, зачем, кому передаешь и как человек может отозвать согласие.</p>
+        <p><strong>Пользовательское соглашение / оферта</strong> описывает правила работы, сроки, оплату, ответственность и ограничения по грузам.</p>
+        <p><strong>Контакты</strong>: email, город, режим работы, форма обратной связи и соцсети.</p>
+      </div>
+    </div>
+
+    <div class="section card">
+      <h2>Текст политики</h2>
+      <p class="small">Spaze.log обрабатывает имя, телефон, email и содержание заявки для связи с клиентом, расчета доставки и оказания услуг. Данные не передаются третьим лицам, кроме подрядчиков, участвующих в исполнении заказа, и только в необходимом объеме. Отправляя форму, пользователь соглашается на обработку персональных данных и может отозвать согласие по email bkoshurine@gmail.com.</p>
+    </div>
+
+    <div class="footer">© Spaze.log · Email: bkoshurine@gmail.com · Логистика и доставка</div>
+  </div>
+</body>
+</html>
