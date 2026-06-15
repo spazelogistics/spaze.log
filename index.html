@@ -1,152 +1,1080 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Spaze.log — логистика без лишнего</title>
-  <meta name="description" content="Spaze.log — онлайн-логистическая компания: заявки, расчет доставки, отслеживание и сопровождение грузов." />
-  <style>
-    :root{
-      --bg:#07111f; --card:#0d1b31; --muted:#9bb0d0; --text:#eef4ff;
-      --accent:#4ea1ff; --accent2:#7c5cff; --line:rgba(255,255,255,.09)
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;font-family:Inter,Arial,sans-serif;background:radial-gradient(circle at top,#122547,#07111f 55%);color:var(--text)}
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:1180px;margin:0 auto;padding:24px}
-    .nav{display:flex;justify-content:space-between;align-items:center;padding:12px 0}
-    .brand{font-weight:800;letter-spacing:.3px;font-size:22px}
-    .pill{padding:10px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.03)}
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:stretch;padding:26px 0 10px}
-    .hero h1{font-size:56px;line-height:1.02;margin:0 0 16px}
-    .hero p{color:var(--muted);font-size:18px;line-height:1.6}
-    .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
-    .btn{padding:14px 18px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));font-weight:700}
-    .btn.secondary{background:transparent;border:1px solid var(--line)}
-    .card{background:rgba(13,27,49,.88);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 20px 80px rgba(0,0,0,.25)}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:18px 0 28px}
-    .mini{padding:18px}
-    .mini h3,.section h2{margin:0 0 10px}
-    .mini p,.section p,li{color:var(--muted);line-height:1.65}
-    .section{margin:28px 0}
-    .two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .input,.select,textarea{
-      width:100%;padding:14px 15px;border-radius:14px;border:1px solid var(--line);
-      background:#091323;color:var(--text);margin:8px 0 14px
-    }
-    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .footer{border-top:1px solid var(--line);margin-top:34px;padding:18px 0;color:var(--muted);font-size:14px}
-    .small{font-size:14px;color:var(--muted)}
-    .tag{display:inline-block;margin-right:8px;margin-bottom:8px;padding:8px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.03)}
-    @media (max-width: 900px){
-      .hero,.grid,.two,.row{grid-template-columns:1fr}
-      .hero h1{font-size:40px}
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spaze.log — Грузоперевозки Казахстан и Россия</title>
+<meta name="description" content="Надёжная логистика между Казахстаном и Россией. Доставка грузов, таможенное оформление, отслеживание в реальном времени. Работаем честно.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0B1628;
+    --navy-mid: #152038;
+    --navy-light: #1E3050;
+    --accent: #E8F04A;
+    --accent-dark: #C9D63A;
+    --white: #FFFFFF;
+    --gray-100: #F5F6F8;
+    --gray-200: #E8EAF0;
+    --gray-400: #9AA0B2;
+    --gray-600: #5A6380;
+    --text-main: #0B1628;
+    --text-muted: #5A6380;
+    --radius: 12px;
+    --radius-lg: 20px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-main);
+    background: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(11, 22, 40, 0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; height: 68px;
+  }
+  .logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--white); text-decoration: none; letter-spacing: -0.02em;
+  }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.7); text-decoration: none;
+    font-size: 0.9rem; font-weight: 500; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    background: var(--accent); color: var(--navy);
+    padding: 0.55rem 1.4rem; border-radius: 8px;
+    font-weight: 600; font-size: 0.9rem; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: var(--accent-dark); transform: translateY(-1px); }
+  .burger {
+    display: none; flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 4px;
+  }
+  .burger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--white); border-radius: 2px; transition: all 0.3s;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--navy);
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 2rem 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(232,240,74,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(232,240,74,0.12); color: var(--accent);
+    padding: 6px 14px; border-radius: 100px;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent); flex-shrink: 0;
+  }
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-weight: 700; color: var(--white);
+    line-height: 1.1; letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+  h1 em { color: var(--accent); font-style: normal; }
+  .hero-sub {
+    color: rgba(255,255,255,0.6); font-size: 1.1rem;
+    line-height: 1.7; margin-bottom: 2.5rem; max-width: 480px;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: var(--navy);
+    padding: 0.85rem 2rem; border-radius: 10px;
+    font-weight: 700; font-size: 1rem; text-decoration: none;
+    transition: all 0.2s; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); }
+  .btn-outline {
+    border: 1.5px solid rgba(255,255,255,0.25); color: var(--white);
+    padding: 0.85rem 2rem; border-radius: 10px;
+    font-weight: 600; font-size: 1rem; text-decoration: none;
+    transition: all 0.2s; display: inline-block;
+  }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.6); transform: translateY(-2px); }
+
+  /* route visual */
+  .hero-visual {
+    background: var(--navy-light);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-lg); padding: 2.5rem;
+    position: relative;
+  }
+  .route-title {
+    color: var(--gray-400); font-size: 0.75rem;
+    text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem;
+  }
+  .route-cities {
+    display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;
+  }
+  .city {
+    flex: 1; background: var(--navy-mid);
+    border-radius: 10px; padding: 1rem 1.25rem;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .city-flag { font-size: 1.4rem; margin-bottom: 0.3rem; }
+  .city-name { color: var(--white); font-weight: 600; font-size: 1rem; }
+  .city-label { color: var(--gray-400); font-size: 0.78rem; }
+  .route-arrow {
+    color: var(--accent); font-size: 1.5rem; flex-shrink: 0;
+  }
+  .route-track {
+    height: 4px; background: rgba(255,255,255,0.08);
+    border-radius: 2px; position: relative; margin-bottom: 0.5rem;
+  }
+  .route-track-fill {
+    position: absolute; left: 0; top: 0; height: 100%;
+    width: 65%; background: var(--accent); border-radius: 2px;
+    animation: trackFill 3s ease-in-out infinite alternate;
+  }
+  @keyframes trackFill { from { width: 30%; } to { width: 80%; } }
+  .route-meta {
+    display: flex; justify-content: space-between;
+    color: var(--gray-400); font-size: 0.78rem;
+  }
+  .stats-row {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem;
+  }
+  .stat-box {
+    background: var(--navy-mid);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px; padding: 1rem; text-align: center;
+  }
+  .stat-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.6rem; font-weight: 700; color: var(--accent);
+  }
+  .stat-lbl { color: var(--gray-400); font-size: 0.75rem; margin-top: 2px; }
+
+  /* ─── SECTIONS BASE ─── */
+  section { padding: 100px 2rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-eyebrow {
+    color: var(--accent-dark); font-size: 0.78rem;
+    font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+  h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+    font-weight: 700; letter-spacing: -0.03em;
+    color: var(--navy); line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .section-sub {
+    color: var(--text-muted); font-size: 1.05rem;
+    max-width: 560px; line-height: 1.7;
+  }
+
+  /* ─── SERVICES ─── */
+  .services { background: var(--gray-100); }
+  .services-header { text-align: center; margin-bottom: 4rem; }
+  .services-header .section-sub { margin: 0 auto; }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;
+  }
+  .service-card {
+    background: var(--white); border-radius: var(--radius-lg);
+    padding: 2rem; border: 1px solid var(--gray-200);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(11,22,40,0.1); }
+  .service-icon {
+    width: 52px; height: 52px;
+    background: var(--navy); border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+  .service-icon svg { width: 26px; height: 26px; stroke: var(--accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .service-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem; font-weight: 600; color: var(--navy);
+    margin-bottom: 0.6rem;
+  }
+  .service-card p { color: var(--text-muted); font-size: 0.93rem; line-height: 1.65; }
+
+  /* ─── HOW IT WORKS ─── */
+  .how-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }
+  .steps { display: flex; flex-direction: column; gap: 2rem; }
+  .step { display: flex; gap: 1.25rem; align-items: flex-start; }
+  .step-num {
+    flex-shrink: 0;
+    width: 44px; height: 44px;
+    background: var(--navy); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; font-size: 1rem; color: var(--accent);
+  }
+  .step-content h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600; font-size: 1rem; color: var(--navy); margin-bottom: 0.3rem;
+  }
+  .step-content p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.65; }
+  .how-visual {
+    background: var(--navy); border-radius: var(--radius-lg);
+    padding: 2.5rem; color: var(--white);
+  }
+  .calc-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600; font-size: 1.1rem; color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+  .calc-field { margin-bottom: 1rem; }
+  .calc-field label { display: block; color: var(--gray-400); font-size: 0.8rem; margin-bottom: 0.4rem; }
+  .calc-field select, .calc-field input[type=number] {
+    width: 100%; background: var(--navy-light);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px; padding: 0.65rem 0.9rem;
+    color: var(--white); font-size: 0.95rem; font-family: 'Inter', sans-serif;
+    outline: none; transition: border-color 0.2s;
+  }
+  .calc-field select:focus, .calc-field input:focus { border-color: var(--accent); }
+  .calc-field select option { background: var(--navy-mid); }
+  .calc-btn {
+    width: 100%; background: var(--accent); color: var(--navy);
+    border: none; border-radius: 8px; padding: 0.8rem;
+    font-weight: 700; font-size: 0.95rem; cursor: pointer;
+    font-family: 'Inter', sans-serif; transition: background 0.2s;
+    margin-top: 0.5rem;
+  }
+  .calc-btn:hover { background: var(--accent-dark); }
+  .calc-result {
+    margin-top: 1rem; padding: 1rem;
+    background: rgba(232,240,74,0.1); border-radius: 8px;
+    border: 1px solid rgba(232,240,74,0.25);
+    display: none;
+  }
+  .calc-result.show { display: block; }
+  .calc-result p { color: var(--gray-400); font-size: 0.8rem; margin-bottom: 4px; }
+  .calc-result strong {
+    color: var(--accent); font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.4rem; font-weight: 700;
+  }
+
+  /* ─── WHY US ─── */
+  .why { background: var(--navy); }
+  .why h2 { color: var(--white); }
+  .why .section-sub { color: rgba(255,255,255,0.55); max-width: 100%; }
+  .why-header { margin-bottom: 4rem; }
+  .trust-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;
+  }
+  .trust-card {
+    background: var(--navy-light);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius); padding: 1.75rem;
+    transition: border-color 0.25s;
+  }
+  .trust-card:hover { border-color: rgba(232,240,74,0.35); }
+  .trust-card-icon {
+    width: 40px; height: 40px; margin-bottom: 1rem;
+    color: var(--accent);
+  }
+  .trust-card-icon svg { width: 40px; height: 40px; stroke: var(--accent); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .trust-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--white); font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem;
+  }
+  .trust-card p { color: rgba(255,255,255,0.5); font-size: 0.88rem; line-height: 1.65; }
+
+  /* ─── DIRECTIONS ─── */
+  .directions-header { margin-bottom: 3rem; }
+  .directions-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;
+  }
+  .direction-card {
+    border: 1.5px solid var(--gray-200); border-radius: var(--radius-lg);
+    padding: 2rem; transition: all 0.25s; position: relative; overflow: hidden;
+  }
+  .direction-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: var(--accent); transform: scaleX(0); transition: transform 0.3s;
+    transform-origin: left;
+  }
+  .direction-card:hover { border-color: var(--navy); }
+  .direction-card:hover::after { transform: scaleX(1); }
+  .dir-flags { font-size: 1.6rem; margin-bottom: 1rem; }
+  .direction-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.05rem; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem;
+  }
+  .direction-card p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; }
+  .dir-time {
+    display: inline-block; margin-top: 1rem;
+    background: var(--gray-100); color: var(--navy);
+    font-size: 0.78rem; font-weight: 600; padding: 4px 10px; border-radius: 100px;
+  }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials { background: var(--gray-100); }
+  .testimonials-header { text-align: center; margin-bottom: 3.5rem; }
+  .testimonials-header .section-sub { margin: 0 auto; }
+  .reviews-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;
+  }
+  .review-card {
+    background: var(--white); border-radius: var(--radius-lg);
+    padding: 1.75rem; border: 1px solid var(--gray-200);
+  }
+  .stars { color: #F5A623; font-size: 1rem; margin-bottom: 1rem; }
+  .review-text { color: var(--text-main); font-size: 0.93rem; line-height: 1.7; margin-bottom: 1.25rem; }
+  .reviewer { display: flex; align-items: center; gap: 0.75rem; }
+  .reviewer-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--navy); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.85rem; flex-shrink: 0;
+  }
+  .reviewer-name { font-weight: 600; font-size: 0.9rem; color: var(--navy); }
+  .reviewer-role { color: var(--text-muted); font-size: 0.78rem; }
+
+  /* ─── CONTACT ─── */
+  .contact-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+  }
+  .contact-info h2 { margin-bottom: 0.75rem; }
+  .contact-info .section-sub { margin-bottom: 2.5rem; }
+  .contact-methods { display: flex; flex-direction: column; gap: 1.25rem; }
+  .contact-method {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 1.25rem; background: var(--gray-100);
+    border-radius: var(--radius); border: 1px solid var(--gray-200);
+  }
+  .contact-method-icon {
+    width: 42px; height: 42px; flex-shrink: 0;
+    background: var(--navy); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .contact-method-icon svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .contact-method-label { color: var(--text-muted); font-size: 0.78rem; margin-bottom: 2px; }
+  .contact-method-value { color: var(--navy); font-weight: 600; font-size: 0.95rem; text-decoration: none; }
+  .contact-method-value:hover { color: var(--navy-mid); }
+  /* form */
+  .contact-form {
+    background: var(--navy); border-radius: var(--radius-lg);
+    padding: 2.5rem;
+  }
+  .form-title {
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--white); font-size: 1.2rem; font-weight: 600; margin-bottom: 1.75rem;
+  }
+  .form-group { margin-bottom: 1.1rem; }
+  .form-group label { display: block; color: var(--gray-400); font-size: 0.8rem; margin-bottom: 0.4rem; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; background: var(--navy-light);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px; padding: 0.7rem 0.9rem;
+    color: var(--white); font-size: 0.93rem; font-family: 'Inter', sans-serif;
+    outline: none; transition: border-color 0.2s; resize: none;
+  }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: var(--gray-600); }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); }
+  .form-group select option { background: var(--navy-mid); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-submit {
+    width: 100%; background: var(--accent); color: var(--navy);
+    border: none; border-radius: 8px; padding: 0.9rem;
+    font-weight: 700; font-size: 1rem; cursor: pointer;
+    font-family: 'Inter', sans-serif; transition: all 0.2s;
+    margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: var(--accent-dark); transform: translateY(-1px); }
+  .form-note { color: rgba(255,255,255,0.35); font-size: 0.75rem; text-align: center; margin-top: 0.75rem; }
+  .form-success {
+    text-align: center; padding: 2rem;
+    color: var(--accent); display: none;
+  }
+  .form-success.show { display: block; }
+  .form-success h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .form-success p { color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy); border-top: 1px solid rgba(255,255,255,0.07);
+    padding: 3rem 2rem 2rem;
+  }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    flex-wrap: wrap; gap: 2rem;
+  }
+  .footer-logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.4rem; font-weight: 700;
+    color: var(--white); text-decoration: none; letter-spacing: -0.02em;
+    display: block; margin-bottom: 0.5rem;
+  }
+  .footer-logo span { color: var(--accent); }
+  .footer-tagline { color: rgba(255,255,255,0.4); font-size: 0.82rem; }
+  .footer-links { display: flex; gap: 3rem; flex-wrap: wrap; }
+  .footer-col h4 {
+    color: rgba(255,255,255,0.5); font-size: 0.75rem;
+    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem;
+  }
+  .footer-col a {
+    display: block; color: rgba(255,255,255,0.65); text-decoration: none;
+    font-size: 0.88rem; margin-bottom: 0.4rem; transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--accent); }
+  .footer-bottom {
+    max-width: 1200px; margin: 2rem auto 0;
+    padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.07);
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-bottom p { color: rgba(255,255,255,0.3); font-size: 0.8rem; }
+
+  /* ─── MOBILE NAV ─── */
+  .mobile-menu {
+    position: fixed; top: 68px; left: 0; right: 0;
+    background: rgba(11, 22, 40, 0.98); z-index: 99;
+    padding: 1.5rem 2rem 2rem; display: none; flex-direction: column; gap: 1.25rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: rgba(255,255,255,0.8); text-decoration: none;
+    font-size: 1.05rem; font-weight: 500;
+  }
+  .mobile-menu .nav-cta { text-align: center; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .how-inner { grid-template-columns: 1fr; }
+    .contact-inner { grid-template-columns: 1fr; }
+    .nav-links, .nav-cta { display: none; }
+    .burger { display: flex; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    section { padding: 70px 1.25rem; }
+    .hero { padding: 100px 1.25rem 60px; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* floating WhatsApp */
+  .whatsapp-btn {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
+    width: 58px; height: 58px; border-radius: 50%;
+    background: #25D366; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+    text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .whatsapp-btn:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(37,211,102,0.55); }
+  .whatsapp-btn svg { width: 30px; height: 30px; fill: white; }
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="nav">
-      <div class="brand">Spaze.log</div>
-      <div class="pill">bkoshurine@gmail.com</div>
-    </div>
 
-    <div class="hero">
-      <div>
-        <h1>Логистика, которая работает быстро и прозрачно.</h1>
-        <p>Spaze.log помогает бизнесу и частным клиентам отправлять грузы, рассчитывать стоимость доставки, отслеживать статус и получать поддержку в одном месте.</p>
-        <div class="btns">
-          <a class="btn" href="#request">Оставить заявку</a>
-          <a class="btn secondary" href="#services">Услуги</a>
-        </div>
-        <div style="margin-top:18px">
-          <span class="tag">Доставка по РФ</span>
-          <span class="tag">Казахстан ↔ Россия</span>
-          <span class="tag">Склад и экспедирование</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>Быстрый расчет</h3>
-        <label>Откуда</label>
-        <input class="input" placeholder="Павлодар">
-        <label>Куда</label>
-        <input class="input" placeholder="Санкт-Петербург">
-        <label>Вес, кг</label>
-        <input class="input" type="number" placeholder="12">
-        <label>Тип груза</label>
-        <select class="select">
-          <option>Стандартный</option>
-          <option>Хрупкий</option>
-          <option>Срочный</option>
-        </select>
-        <div class="pill" style="display:inline-block">Расчет по запросу в мессенджер / почту</div>
-      </div>
-    </div>
-
-    <div class="grid" id="services">
-      <div class="card mini">
-        <h3>Автоперевозки</h3>
-        <p>Полная загрузка, догруз, сборные грузы, межгород и международные маршруты.</p>
-      </div>
-      <div class="card mini">
-        <h3>Сопровождение</h3>
-        <p>Документы, контроль статуса, связь с клиентом и помощь на каждом этапе.</p>
-      </div>
-      <div class="card mini">
-        <h3>Отслеживание</h3>
-        <p>Статус заявки, ETA и уведомления по каждому грузу.</p>
-      </div>
-    </div>
-
-    <div class="two section">
-      <div class="card">
-        <h2>Как продать логистику</h2>
-        <ul>
-          <li>Продавай не перевозку, а результат: срок, сохранность, контроль и спокойствие.</li>
-          <li>Нужны 3 оффера: для бизнеса, для e-commerce и для частных отправок.</li>
-          <li>Лучше всего заходят понятные тарифы, калькулятор и быстрый ответ менеджера.</li>
-          <li>Показывай кейсы: какие грузы, какие сроки, какая экономия.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>Куда размещать</h2>
-        <ul>
-          <li>Свой сайт + SEO по городам и маршрутам.</li>
-          <li>Telegram, VK, Instagram, Avito, 2GIS, Яндекс Бизнес.</li>
-          <li>Профильные чаты предпринимателей и маркетплейс-продавцов.</li>
-          <li>Контекстная реклама по запросам “доставка груза”, “логистика”, “перевозка”.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="two section" id="request">
-      <div class="card">
-        <h2>Форма заявки</h2>
-        <div class="row">
-          <input class="input" placeholder="Имя">
-          <input class="input" placeholder="Телефон">
-        </div>
-        <input class="input" placeholder="Email">
-        <textarea rows="5" class="input" placeholder="Что нужно перевезти? Откуда и куда?"></textarea>
-        <a class="btn" href="mailto:bkoshurine@gmail.com?subject=Заявка%20Spaze.log">Отправить на почту</a>
-      </div>
-
-      <div class="card">
-        <h2>Документы для сайта</h2>
-        <p><strong>Политика конфиденциальности</strong> нужна, если ты собираешь имя, телефон или email через форму. В ней укажи, какие данные собираешь, зачем, кому передаешь и как человек может отозвать согласие.</p>
-        <p><strong>Пользовательское соглашение / оферта</strong> описывает правила работы, сроки, оплату, ответственность и ограничения по грузам.</p>
-        <p><strong>Контакты</strong>: email, город, режим работы, форма обратной связи и соцсети.</p>
-      </div>
-    </div>
-
-    <div class="section card">
-      <h2>Текст политики</h2>
-      <p class="small">Spaze.log обрабатывает имя, телефон, email и содержание заявки для связи с клиентом, расчета доставки и оказания услуг. Данные не передаются третьим лицам, кроме подрядчиков, участвующих в исполнении заказа, и только в необходимом объеме. Отправляя форму, пользователь соглашается на обработку персональных данных и может отозвать согласие по email bkoshurine@gmail.com.</p>
-    </div>
-
-    <div class="footer">© Spaze.log · Email: bkoshurine@gmail.com · Логистика и доставка</div>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#"><span>Spaze</span>.log</a>
+    <ul class="nav-links">
+      <li><a href="#services">Услуги</a></li>
+      <li><a href="#how">Как мы работаем</a></li>
+      <li><a href="#directions">Направления</a></li>
+      <li><a href="#reviews">Отзывы</a></li>
+      <li><a href="#contact">Контакты</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Оставить заявку</a>
+    <button class="burger" id="burger" aria-label="Открыть меню">
+      <span></span><span></span><span></span>
+    </button>
   </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#services" onclick="closeMobile()">Услуги</a>
+  <a href="#how" onclick="closeMobile()">Как мы работаем</a>
+  <a href="#directions" onclick="closeMobile()">Направления</a>
+  <a href="#reviews" onclick="closeMobile()">Отзывы</a>
+  <a href="#contact" onclick="closeMobile()">Контакты</a>
+  <a class="nav-cta" href="#contact" onclick="closeMobile()">Оставить заявку</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Казахстан · Россия</div>
+      <h1>Доставляем грузы<br>туда, где <em>ждут</em></h1>
+      <p class="hero-sub">Надёжная логистика между Казахстаном и Россией. Работаем честно — без скрытых наценок, с реальными сроками и живым контактом с менеджером.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#contact">Рассчитать доставку</a>
+        <a class="btn-outline" href="#how">Как это работает</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <p class="route-title">Активный маршрут</p>
+      <div class="route-cities">
+        <div class="city">
+          <div class="city-flag">🇰🇿</div>
+          <div class="city-name">Алматы</div>
+          <div class="city-label">Казахстан</div>
+        </div>
+        <div class="route-arrow">→</div>
+        <div class="city">
+          <div class="city-flag">🇷🇺</div>
+          <div class="city-name">Санкт-Петербург</div>
+          <div class="city-label">Россия</div>
+        </div>
+      </div>
+      <div class="route-track"><div class="route-track-fill"></div></div>
+      <div class="route-meta"><span>Груз в пути</span><span>~5-7 дней</span></div>
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-num">150+</div>
+          <div class="stat-lbl">доставок</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">99%</div>
+          <div class="stat-lbl">без потерь</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">24/7</div>
+          <div class="stat-lbl">на связи</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="services-header">
+      <div class="section-eyebrow">Что мы делаем</div>
+      <h2>Полный цикл логистики</h2>
+      <p class="section-sub">От забора груза до сдачи адресату. Не передаём вас по цепочке посредников.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <h3>Автомобильная доставка</h3>
+        <p>Фура, еврофура или газель — подбираем транспорт под объём и тип груза. КЗ → РФ и обратно.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <h3>Личный менеджер</h3>
+        <p>Один человек ведёт вашу заявку от начала до конца. Пишете — отвечаем в течение 15 минут.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h3>Таможенное оформление</h3>
+        <p>Подготовим все необходимые документы, подадим декларацию и проведём груз через границу без задержек.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Онлайн-отслеживание</h3>
+        <p>Отправляем статус по WhatsApp или Telegram — где груз сейчас, когда будет, без лишних звонков.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Забор и доставка до двери</h3>
+        <p>Заберём у вас на складе или офисе, доставим адресату. Не нужно никуда везти самому.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <h3>Сборные грузы (LTL)</h3>
+        <p>Нет целой фуры? Не проблема. Докладываем ваш груз в сборный — платите только за свои кубометры.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-inner">
+    <div class="how-inner">
+      <div>
+        <div class="section-eyebrow">Процесс</div>
+        <h2>Всё просто —<br>от заявки до доставки</h2>
+        <p class="section-sub" style="margin-bottom:2.5rem;">Четыре шага — и ваш груз едет. Без бумажной волокиты и непонятных терминов.</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h3>Оставляете заявку</h3>
+              <p>В форме на сайте, по WhatsApp или Telegram. Указываете что, откуда, куда и когда.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h3>Получаете расчёт</h3>
+              <p>В течение 30 минут присылаем точную стоимость и сроки. Никаких «от и до» — только конкретные цифры.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h3>Подписываем договор</h3>
+              <p>Официальный договор с ответственностью за груз. Работаем по предоплате 50%, остаток — при доставке.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h3>Доставляем и отчитываемся</h3>
+              <p>Забираем груз, везём, отправляем фото на каждом этапе. Сдаём с подписью получателя.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="how-visual">
+        <p class="calc-title">Примерный расчёт стоимости</p>
+        <div class="calc-field">
+          <label>Откуда</label>
+          <select id="calc-from">
+            <option value="almaty">Алматы</option>
+            <option value="nur">Нур-Султан (Астана)</option>
+            <option value="shymkent">Шымкент</option>
+            <option value="karaganda">Қарағанды</option>
+            <option value="pavlodar">Павлодар</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label>Куда</label>
+          <select id="calc-to">
+            <option value="spb">Санкт-Петербург</option>
+            <option value="msk">Москва</option>
+            <option value="ekb">Екатеринбург</option>
+            <option value="nsk">Новосибирск</option>
+            <option value="omsk">Омск</option>
+          </select>
+        </div>
+        <div class="form-row" style="margin-bottom:0;">
+          <div class="calc-field">
+            <label>Вес (кг)</label>
+            <input type="number" id="calc-weight" placeholder="500" min="1">
+          </div>
+          <div class="calc-field">
+            <label>Объём (м³)</label>
+            <input type="number" id="calc-vol" placeholder="2" min="0.1" step="0.1">
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calculate()">Рассчитать</button>
+        <div class="calc-result" id="calc-result">
+          <p>Ориентировочная стоимость</p>
+          <strong id="calc-price">—</strong>
+          <p style="margin-top:8px;font-size:0.75rem;color:rgba(255,255,255,0.4);">Точная цена — после уточнения деталей. Свяжитесь с нами.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="why">
+  <div class="section-inner">
+    <div class="why-header">
+      <div class="section-eyebrow" style="color: rgba(232,240,74,0.7);">Почему Spaze.log</div>
+      <h2>Мы отвечаем за груз,<br>а не просто его везём</h2>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <div class="trust-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Страхование груза</h3>
+        <p>Каждый груз страхуется. Если что-то случится в пути — возместим стоимость по договору.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-card-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Официальный договор</h3>
+        <p>Работаем через ИП, выдаём все закрывающие документы. Безналичный расчёт, счета-фактуры.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-card-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3>Честная цена</h3>
+        <p>Говорим полную стоимость сразу. Никаких «доплатите на границе» или внезапных наценок.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Один менеджер — всегда</h3>
+        <p>Не передаём вас от оператора к оператору. Один человек знает всё про ваш груз.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-card-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Конфиденциальность</h3>
+        <p>Не разглашаем содержимое грузов, маршруты и данные клиентов. Ваш бизнес — только ваш.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-card-icon">
+          <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+        </div>
+        <h3>Возврат грузов</h3>
+        <p>Организуем обратную логистику и возвраты. Не нужно искать другого перевозчика.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIRECTIONS -->
+<section id="directions">
+  <div class="section-inner">
+    <div class="directions-header">
+      <div class="section-eyebrow">Маршруты</div>
+      <h2>Работаем по этим направлениям</h2>
+      <p class="section-sub">Регулярные рейсы — не ждёте попутного транспорта. Груз отправляется по графику.</p>
+    </div>
+    <div class="directions-grid">
+      <div class="direction-card">
+        <div class="dir-flags">🇰🇿→🇷🇺</div>
+        <h3>Казахстан → Санкт-Петербург</h3>
+        <p>Алматы, Астана, Шымкент, Павлодар — в Питер. Регулярный рейс 2 раза в неделю.</p>
+        <span class="dir-time">5–8 дней</span>
+      </div>
+      <div class="direction-card">
+        <div class="dir-flags">🇰🇿→🇷🇺</div>
+        <h3>Казахстан → Москва</h3>
+        <p>Основной маршрут с перегрузкой в Самаре или напрямую. Самый востребованный рейс.</p>
+        <span class="dir-time">4–6 дней</span>
+      </div>
+      <div class="direction-card">
+        <div class="dir-flags">🇰🇿→🇷🇺</div>
+        <h3>Казахстан → Урал и Сибирь</h3>
+        <p>Екатеринбург, Новосибирск, Омск, Тюмень. Логистически удобный маршрут через Петропавловск.</p>
+        <span class="dir-time">3–5 дней</span>
+      </div>
+      <div class="direction-card">
+        <div class="dir-flags">🇷🇺→🇰🇿</div>
+        <h3>Россия → Казахстан</h3>
+        <p>Обратный рейс с теми же городами. Загружаем попутно — цена ниже.</p>
+        <span class="dir-time">4–7 дней</span>
+      </div>
+      <div class="direction-card">
+        <div class="dir-flags">🇰🇿🔄🇷🇺</div>
+        <h3>Сборные грузы</h3>
+        <p>Небольшие партии объединяем в одну фуру. Платите только за свои паллеты.</p>
+        <span class="dir-time">+1–2 дня</span>
+      </div>
+      <div class="direction-card">
+        <div class="dir-flags">📦</div>
+        <h3>Ваш маршрут</h3>
+        <p>Нужно что-то нестандартное? Спросите — обсудим. Организуем доставку под ваши задачи.</p>
+        <span class="dir-time" style="background:var(--navy); color: var(--accent);">Уточняйте</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+  <div class="section-inner">
+    <div class="testimonials-header">
+      <div class="section-eyebrow">Отзывы</div>
+      <h2>Что говорят клиенты</h2>
+      <p class="section-sub">Реальные истории реальных людей. Без редактирования.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">Перевозили оборудование из Алматы в Питер. Пять паллет, хрупкий груз. Всё приехало целым, за 6 дней. Сфотографировали при погрузке и выгрузке — сразу прислали. Так и работать надо.</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">АМ</div>
+          <div>
+            <div class="reviewer-name">Асель Мирас</div>
+            <div class="reviewer-role">Владелец интернет-магазина, Алматы</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">Искал перевозчика для регулярных поставок из Нур-Султана в Москву. Работаем третий месяц, ни одного сбоя. Менеджер отвечает даже поздно вечером. Рекомендую без оговорок.</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">ДК</div>
+          <div>
+            <div class="reviewer-name">Дмитрий Краснов</div>
+            <div class="reviewer-role">Логист, ООО «СтройМаш»</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">Первый раз отправляла груз через границу, очень боялась бюрократии. Ребята взяли все документы на себя — я только подписала договор. Груз дошёл раньше срока. Спасибо!</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">НС</div>
+          <div>
+            <div class="reviewer-name">Наталья Сергеева</div>
+            <div class="reviewer-role">ИП, Шымкент</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-inner">
+      <div class="contact-info">
+        <div class="section-eyebrow">Связаться</div>
+        <h2>Обсудим вашу доставку</h2>
+        <p class="section-sub">Расскажите о грузе — рассчитаем стоимость и сроки в течение 30 минут.</p>
+        <div class="contact-methods">
+          <div class="contact-method">
+            <div class="contact-method-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-method-label">WhatsApp / Telegram</div>
+              <a class="contact-method-value" href="https://wa.me/77001234567">+7 700 123-45-67</a>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="contact-method-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact-method-label">Email</div>
+              <a class="contact-method-value" href="mailto:hello@spazelog.com">hello@spazelog.com</a>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="contact-method-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="contact-method-label">Режим работы</div>
+              <div class="contact-method-value">Пн–Сб, 9:00–21:00 (МСК)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div id="form-body">
+          <p class="form-title">Заявка на доставку</p>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Ваше имя</label>
+              <input type="text" id="f-name" placeholder="Иван">
+            </div>
+            <div class="form-group">
+              <label>Телефон / Telegram</label>
+              <input type="text" id="f-phone" placeholder="+7 700 000-00-00">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Откуда</label>
+              <select id="f-from">
+                <option value="">Выберите город</option>
+                <option>Алматы</option>
+                <option>Астана (Нур-Султан)</option>
+                <option>Шымкент</option>
+                <option>Қарағанды</option>
+                <option>Павлодар</option>
+                <option>Другой город КЗ</option>
+                <option>Москва</option>
+                <option>Санкт-Петербург</option>
+                <option>Другой город РФ</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Куда</label>
+              <select id="f-to">
+                <option value="">Выберите город</option>
+                <option>Санкт-Петербург</option>
+                <option>Москва</option>
+                <option>Екатеринбург</option>
+                <option>Новосибирск</option>
+                <option>Омск</option>
+                <option>Алматы</option>
+                <option>Астана</option>
+                <option>Другой город</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Что везём и сколько (вес, объём, тип груза)</label>
+            <textarea id="f-cargo" rows="3" placeholder="Например: стройматериалы, 1 тонна, 3 м³"></textarea>
+          </div>
+          <button class="form-submit" onclick="submitForm()">Отправить заявку</button>
+          <p class="form-note">Ответим в течение 30 минут в рабочее время. Данные не передаются третьим лицам.</p>
+        </div>
+        <div class="form-success" id="form-success">
+          <p style="font-size:2.5rem;margin-bottom:1rem;">✅</p>
+          <h3 style="color:var(--accent);font-family:'Space Grotesk',sans-serif;">Заявка принята!</h3>
+          <p style="color:rgba(255,255,255,0.6);margin-top:0.5rem;">Свяжемся с вами в течение 30 минут. Пока можете написать нам в WhatsApp для быстрого ответа.</p>
+          <a href="https://wa.me/77001234567" style="display:inline-block;margin-top:1.5rem;background:var(--accent);color:var(--navy);padding:0.8rem 1.75rem;border-radius:8px;font-weight:700;text-decoration:none;">Написать в WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a class="footer-logo" href="#"><span>Spaze</span>.log</a>
+      <p class="footer-tagline">Грузоперевозки КЗ ↔ РФ</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Услуги</h4>
+        <a href="#services">Автодоставка</a>
+        <a href="#services">Таможня</a>
+        <a href="#services">Сборные грузы</a>
+        <a href="#services">Страхование</a>
+      </div>
+      <div class="footer-col">
+        <h4>Направления</h4>
+        <a href="#directions">КЗ → Санкт-Петербург</a>
+        <a href="#directions">КЗ → Москва</a>
+        <a href="#directions">КЗ → Урал и Сибирь</a>
+        <a href="#directions">РФ → Казахстан</a>
+      </div>
+      <div class="footer-col">
+        <h4>Компания</h4>
+        <a href="#how">Как мы работаем</a>
+        <a href="#why">Почему мы</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#contact">Контакты</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Spaze.log. Все права защищены.</p>
+    <p>Казахстан · Россия · Работаем официально</p>
+  </div>
+</footer>
+
+<!-- WhatsApp FAB -->
+<a class="whatsapp-btn" href="https://wa.me/77001234567" target="_blank" rel="noopener" aria-label="Написать в WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
+
+<script>
+function toggleMobile() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+function closeMobile() {
+  document.getElementById('mobile-menu').classList.remove('open');
+}
+document.getElementById('burger').addEventListener('click', toggleMobile);
+
+const rates = {
+  almaty: { spb: 120, msk: 100, ekb: 70, nsk: 55, omsk: 50 },
+  nur:    { spb: 110, msk: 90,  ekb: 65, nsk: 60, omsk: 55 },
+  shymkent: { spb: 130, msk: 110, ekb: 80, nsk: 70, omsk: 65 },
+  karaganda: { spb: 105, msk: 85, ekb: 60, nsk: 55, omsk: 48 },
+  pavlodar:  { spb: 100, msk: 80, ekb: 55, nsk: 50, omsk: 44 }
+};
+
+function calculate() {
+  const from = document.getElementById('calc-from').value;
+  const to   = document.getElementById('calc-to').value;
+  const weight = parseFloat(document.getElementById('calc-weight').value) || 0;
+  const vol  = parseFloat(document.getElementById('calc-vol').value) || 0;
+  if (!weight && !vol) {
+    alert('Укажите вес или объём груза');
+    return;
+  }
+  const rate = rates[from]?.[to] ?? 90;
+  const chargeableWeight = Math.max(weight, vol * 250);
+  const base = chargeableWeight * rate;
+  const low  = Math.round(base * 0.9 / 1000) * 1000;
+  const high = Math.round(base * 1.1 / 1000) * 1000;
+  const fmt = n => n.toLocaleString('ru-RU') + ' ₽';
+  document.getElementById('calc-price').textContent = fmt(low) + ' – ' + fmt(high);
+  const res = document.getElementById('calc-result');
+  res.classList.add('show');
+}
+
+function submitForm() {
+  const name  = document.getElementById('f-name').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+  if (!name || !phone) {
+    alert('Заполните имя и контакт для связи');
+    return;
+  }
+  document.getElementById('form-body').style.display = 'none';
+  document.getElementById('form-success').classList.add('show');
+}
+
+// smooth active nav
+const sections = document.querySelectorAll('section[id], nav');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  document.querySelectorAll('section[id]').forEach(sec => {
+    if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+  });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current
+      ? 'var(--accent)' : '';
+  });
+});
+</script>
 </body>
 </html>
